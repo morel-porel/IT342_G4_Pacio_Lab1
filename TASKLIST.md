@@ -1,10 +1,10 @@
-DONE 
-    Backend
-        Entities, Repository, Service, Controller
-        Password hashing
-        JWT
-        Endpoints
-IN PROGRESS
-    None
+DONE <br>
+    Backend <br>
+        Entities, Repository, Service, Controller<br>
+        Password hashing<br>
+        JWT<br>
+        Endpoints<br>
+IN PROGRESS<br>
+    None<br>
 TO DO
-    Frontend Implementations
+    Frontend Implementations<br>
