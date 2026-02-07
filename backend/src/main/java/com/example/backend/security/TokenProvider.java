@@ -1,5 +1,6 @@
 package com.example.backend.security;
 
+import com.example.backend.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -11,21 +12,21 @@ import java.util.Date;
 @Component
 public class TokenProvider {
     @Value("${jwt.secret}")
-    private String jwtSecret;
+    private String secretKey;
     @Value("${jwt.expiration}")
-    private int jwtExpirationMs;
+    private Long validityInMs;
 
-    public String createToken(Long userId){
-        return Jwts.builder().setSubject(Long.toString(userId)).setIssuedAt(new Date()).setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
-                .signWith(SignatureAlgorithm.HS512,jwtSecret).compact();
+    public String createToken(User user){
+        return Jwts.builder().setSubject(String.valueOf(user.getId())).setIssuedAt(new Date()).setExpiration(new Date(System.currentTimeMillis() + validityInMs))
+                .signWith(SignatureAlgorithm.HS512,secretKey).compact();
     }
     public Long getUserIdFromToken(String token){
-        Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
+        Claims claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
         return Long.parseLong(claims.getSubject());
     }
     public boolean validateToken(String token){
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
+            Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
             return true;
         }catch (Exception ex){
             return false;

@@ -35,7 +35,15 @@ public class AuthService {
         if(!passwordEncoder.matches(request.password, user.getPasswordHash())){
             throw new RuntimeException("Invalid Credentials");
         }
-        String token = tokenProvider.createToken(user.getId());
+        String token = tokenProvider.createToken(user);
         return  new AuthResponse(token,user);
+    }
+    public boolean validateToken (String token){
+        return tokenProvider.validateToken(token);
+    }
+    public User getUserFromToken(String token){
+        if(!validateToken(token)){throw new RuntimeException("Invalid or Expired Token");}
+        return userRepository.findById(tokenProvider.getUserIdFromToken(token))
+                .orElseThrow(() -> new RuntimeException("User not found"));
     }
 }
