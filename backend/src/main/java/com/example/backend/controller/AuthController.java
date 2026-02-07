@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "https://localhost:5173")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AuthController {
     private final AuthService authService;
     public AuthController(AuthService authService){
@@ -27,7 +27,7 @@ public class AuthController {
     public ResponseEntity<?> logout(@RequestHeader(value = "Authorization", required = false) String token){
         return ResponseEntity.ok("Logged out successfully");
     }
-    @GetMapping("/profile")
+    @GetMapping("/me")
     public ResponseEntity<?>getProfile(@RequestHeader("Authorization") String token){
         try {
             if (token == null || !token.startsWith("Bearer ")) {

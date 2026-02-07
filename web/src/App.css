@@ -1,10 +1,24 @@
+* {
+  box-sizing: border-box;
+}
 #root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  align-items: center;
 }
-
+.App {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -39,4 +53,180 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Enhanced Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; 
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Styling */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+  outline: none;
+  border-color: #646cff;
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.1);
+}
+
+form input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Submit Button Styling */
+form input[type="submit"],
+form button[type="submit"] {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #646cff 0%, #535bf2 100%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+  font-family: inherit;
+}
+
+form input[type="submit"]:hover,
+form button[type="submit"]:hover {
+  background: linear-gradient(135deg, #535bf2 0%, #646cff 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(100, 108, 255, 0.4);
+}
+
+form input[type="submit"]:active,
+form button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* Auth Page Styling */
+.App h2 {
+  margin-bottom: 1.5rem;
+  color: #646cff;
+  font-size: 2rem;
+}
+
+.App p {
+  margin-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.App p a {
+  color: #646cff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.App p a:hover {
+  color: #535bf2;
+  text-decoration: underline;
+}
+
+/* Dashboard Button Styling */
+.App button {
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 2px solid #646cff;
+  background-color: transparent;
+  color: #646cff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+  font-family: inherit;
+}
+
+.App button:hover {
+  background-color: #646cff;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(100, 108, 255, 0.3);
+}
+
+.App button:active {
+  transform: translateY(0);
+}
+
+/* Profile Section Styling */
+.App div h3 {
+  color: #646cff;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.App div p {
+  text-align: left;
+  max-width: 500px;
+  margin: 0.75rem auto;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  border-left: 3px solid #646cff;
+}
+
+.App div p strong {
+  color: #646cff;
+  margin-right: 0.5rem;
+}
+
+/* Light Mode Adjustments */
+@media (prefers-color-scheme: light) {
+  form {
+    background-color: rgba(0, 0, 0, 0.02);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"] {
+    background-color: white;
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #213547;
+  }
+
+  form input[type="text"]:focus,
+  form input[type="email"]:focus,
+  form input[type="password"]:focus {
+    background-color: white;
+    border-color: #646cff;
+  }
+
+  form input::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .App p {
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .App div p {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
 }
