@@ -23,11 +23,16 @@ A full-stack user authentication system built with Spring Boot (backend), React 
 - **Axios** - HTTP client for API requests
 - **CSS3** - Styling
 
+### Mobile (Android)
+- **Language:** Kotlin
+- **IDE:** Android Studio Iguana
+- **Networking:** Retrofit 2 & Gson
+- **Async:** Kotlin Coroutines
+- **Storage:** SharedPreferences (Session Management)
+- **UI:** XML Layouts & ViewBinding
+
 ### Database
 - **MySQL 8.0+** (via XAMPP)
-
-### Mobile (In Progress)
-- TBD
 
 ---
 
@@ -135,9 +140,27 @@ A full-stack user authentication system built with Spring Boot (backend), React 
 
 ## Steps to Run Mobile App
 
-> **Status:** In Development
-> 
-> Mobile application setup and run instructions will be added once development is complete.
+### Prerequisites
+- Android Studio Iguana (or newer)
+- Android Emulator (AVD) running API 24+
+- Backend server running on `localhost:8080`
+
+### Setup Instructions
+
+1. **Open Project**
+   - Open Android Studio.
+   - Select `Open` and choose the `app` folder.
+
+2. **Sync Gradle**
+   - Allow Android Studio to download dependencies (Retrofit, Coroutines, etc.).
+
+3. **Configure Emulator Connection**
+   - The app uses `http://10.0.2.2:8080` to communicate with the local backend.
+   - Ensure backend is running before launching the app.
+
+4. **Run the App**
+   - Select Emulator (e.g., Pixel 3a API 34).
+   - Click the green **Run** (Play) button.
 
 ---
 

@@ -26,22 +26,24 @@
 - [x] Logout Logic & LocalStorage clearing
 - [x] UI Styling
 
+### Mobile Development
+- [x] Mobile Access and Integration
+  - [x] Mobile app setup
+  - [x] API integration
+  - [x] Authentication flow
+  - [x] User interface design
+
 ---
 
 ## In Progress
 
-### Mobile Development
-- [ ] Mobile Access and Integration
-  - [ ] Mobile app setup
-  - [ ] API integration
-  - [ ] Authentication flow
-  - [ ] User interface design
+### Documentation
+- [ ] Final Documentation
 
 ---
 
 ## To Do
 
-### Documentation
-- [ ] Final Documentation
+
 
 ---
