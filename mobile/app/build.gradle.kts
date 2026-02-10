@@ -5,7 +5,10 @@ plugins {
 
 android {
     namespace = "com.example.mobile"
-    compileSdk = 34
+    compileSdk = 36
+    buildFeatures {
+        viewBinding = true
+    }
 
     defaultConfig {
         applicationId = "com.example.mobile"
@@ -59,6 +62,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.appcompat)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -66,4 +70,12 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    //Retrofit for API
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    //Coroutine for background tasks
+    implementation(libs.kotlinx.coroutines.android)
+    //Lifecycle components
+    implementation(libs.androidx.lifecycle.runtime.ktx.v262)
+
 }
