@@ -59,6 +59,7 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun logout() {
         sessionManager.logout()
+        Toast.makeText(this, "You have been logged out successfully", Toast.LENGTH_SHORT).show()
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
     }

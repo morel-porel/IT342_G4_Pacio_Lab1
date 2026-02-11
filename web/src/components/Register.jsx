@@ -26,7 +26,7 @@ function Register() {
             navigate("/login");
         } catch (error) {
             if (error.response && error.response.status === 409) {
-                setServerError("Username already taken.");
+                setServerError("Username or Email already taken.");
             } else {
                 const message = error.response?.data?.message || "Registration failed. Please try again.";
                 setServerError(message);

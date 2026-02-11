@@ -24,6 +24,7 @@ public class AuthService {
     }
     public User register(RegisterRequest request){
         if(userRepository.existsByUsername(request.username))throw new ResponseStatusException(HttpStatus.CONFLICT, "Username taken");
+        if(userRepository.existsByEmail(request.email))throw new ResponseStatusException(HttpStatus.CONFLICT, "Email taken");
         User user = new User();
         user.setUsername(request.username);
         user.setEmail(request.email);
@@ -33,9 +34,9 @@ public class AuthService {
         return  userRepository.save(user);
     }
     public AuthResponse login(LoginRequest request){
-        User user = userRepository.findByUsername(request.username).orElseThrow(()-> new RuntimeException("User not found"));
+        User user = userRepository.findByUsername(request.username).orElseThrow(()-> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
         if(!passwordEncoder.matches(request.password, user.getPasswordHash())){
-            throw new RuntimeException("Invalid Credentials");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"Invalid Credentials");
         }
         String token = tokenProvider.createToken(user);
         return  new AuthResponse(token,user);
@@ -44,8 +45,8 @@ public class AuthService {
         return tokenProvider.validateToken(token);
     }
     public User getUserFromToken(String token){
-        if(!validateToken(token)){throw new RuntimeException("Invalid or Expired Token");}
+        if(!validateToken(token)){throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"Invalid or Expired Token");}
         return userRepository.findById(tokenProvider.getUserIdFromToken(token))
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED,"User not found"));
     }
 }
