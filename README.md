@@ -169,8 +169,8 @@ http://localhost:8080
   {
     "username": "string",
     "email": "string",
-    "firstname": "string",
-    "lastname": "string",
+    "firstName": "string",
+    "lastName": "string",
     "password": "string"
   }
   ```
@@ -179,14 +179,11 @@ http://localhost:8080
   - **Content:**
     ```json
     {
-      "token": "jwt_token_string",
-      "user": {
-        "id": 1,
-        "username": "string",
-        "email": "string",
-        "firstname": "string",
-        "lastname": "string"
-      }
+       "email": "string",
+       "firstName": "string",
+       "id": 1,
+       "lastName": "string",
+       "username": "string"
     }
     ```
 - **Error Response:**
@@ -211,11 +208,11 @@ http://localhost:8080
     {
       "token": "jwt_token_string",
       "user": {
-        "id": 1,
-        "username": "string",
-        "email": "string",
-        "firstname": "string",
-        "lastname": "string"
+          "email": "string",
+          "firstName": "string",
+          "id": 1,
+          "lastName": "string",
+          "username": "string"
       }
     }
     ```
@@ -236,11 +233,11 @@ http://localhost:8080
   - **Content:**
     ```json
     {
-      "id": 1,
-      "username": "string",
-      "email": "string",
-      "firstname": "string",
-      "lastname": "string"
+       "email": "string",
+       "firstName": "string",
+       "id": 1,
+       "lastName": "string",
+       "username": "string"
     }
     ```
 - **Error Response:**
@@ -250,10 +247,10 @@ http://localhost:8080
 #### 4. Logout User
 - **URL:** `/api/auth/logout`
 - **Method:** `POST`
-- **Auth Required:** Optional
+- **Auth Required:** Yes
 - **Headers:**
   ```
-  Authorization: Bearer <jwt_token> (optional)
+  Authorization: Bearer <jwt_token> 
   ```
 - **Success Response:**
   - **Code:** 200 OK
