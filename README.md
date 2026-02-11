@@ -58,8 +58,8 @@ A full-stack user authentication system built with Spring Boot (backend), React 
    3. Ensure the settings match your XAMPP credentials:
    ```properties
    spring.datasource.url=jdbc:mysql://localhost:3306/my_db?useSSL=false&serverTimezone=UTC
-   spring.datasource.username=[replace with username configured in MySQL]
-   spring.datasource.password=[replace with password configured in MySQL]
+   spring.datasource.username=[root or replace with username configured in MySQL]
+   spring.datasource.password=[leave blank or replace with password configured in MySQL]
    spring.jpa.hibernate.ddl-auto=update
 
    ```
