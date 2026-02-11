@@ -33,17 +33,7 @@
   - [x] Authentication flow
   - [x] User interface design
 
----
-
-## In Progress
-
 ### Documentation
 - [ ] Final Documentation
-
----
-
-## To Do
-
-
 
 ---
