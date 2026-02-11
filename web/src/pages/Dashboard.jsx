@@ -8,6 +8,7 @@ function Dashboard() {
     const navigate = useNavigate();
     const handleLogout = () => {
         logout();
+        alert("You have been logged out successfully.");
         navigate("/login");
     }
     return (
