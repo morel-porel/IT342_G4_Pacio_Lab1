@@ -40,58 +40,45 @@ A full-stack user authentication system built with Spring Boot (backend), React 
 
 ### Prerequisites
 - Java JDK 17 or higher
-- Maven 3.6+
-- MySQL (XAMPP recommended)
+- IntelliJ IDEA (Recommended IDE) or VS Code with Java Extensions
+- XAMPP (For the MySQL database)
 
 ### Setup Instructions
 
-1. **Start MySQL Server**
-   ```bash
-   # Start XAMPP and ensure MySQL is running
-   # Default port: 3306
-   ```
+1. **Database Setup**
+   1. Open XAMPP Control Panel and start Apache and MySQL.
+   2. Open your browser and go to http://localhost/phpmyadmin.
+   3. Click New in the sidebar.
+   4. Enter database name: my_db (Must match application.properties).
+   5. Click Create.
 
-2. **Create Database**
-   ```sql
-   CREATE DATABASE my_db;
-   ```
-
-3. **Configure Database Connection**
-   
-   Edit `backend/src/main/resources/application.properties`:
+2. **Configure Backend**
+   1. Navigate to backend/src/main/resources/.
+   2. Open `backend/src/main/resources/application.properties`
+   3. Ensure the settings match your XAMPP credentials:
    ```properties
    spring.datasource.url=jdbc:mysql://localhost:3306/my_db?useSSL=false&serverTimezone=UTC
-   spring.datasource.username=root
-   spring.datasource.password=
-   spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+   spring.datasource.username=[replace with username configured in MySQL]
+   spring.datasource.password=[replace with password configured in MySQL]
    spring.jpa.hibernate.ddl-auto=update
-   spring.jpa.show-sql=true
-   spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+
    ```
 
-4. **Navigate to Backend Directory**
-   ```bash
-   cd backend
-   ```
+4. **Run Application via IntelliJ**
+   1. Open IntelliJ IDEA.
+   2. Select File > Open and select the backend folder.
+   3. Wait for the project to index and download dependencies (look at the bottom right progress bar).
+   4. Navigate to src/main/java/com/example/backend/BackendApplication.java.
+   5. Look for the green Play/Run button next to public class BackendApplication (or inside the main method).
+   6. Click Run 'BackendApplication'.
 
-5. **Build the Project**
-   ```bash
-   mvn clean install
+5. **Verify Server is Running**
+   1. Look at the console logs. You should see:
    ```
-
-6. **Run the Application**
-   ```bash
-   mvn spring-boot:run
+   Tomcat started on port 8080 (http)
+   Started BackendApplication in ... seconds
    ```
-
-   Or run the JAR file:
-   ```bash
-   java -jar target/backend-0.0.1-SNAPSHOT.jar
-   ```
-
-7. **Verify Server is Running**
-   - Backend should be running on: `http://localhost:8080`
-   - Check console for "Started BackendApplication" message
+   2. Backend should be running on: `http://localhost:8080`
 
 ---
 
