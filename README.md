@@ -189,6 +189,9 @@ http://localhost:8080
       }
     }
     ```
+- **Error Response:**
+  - **Code:** 409 CONFLICT
+  - **Content:** `"Username or Email taken"`
 
 #### 2. Login User
 - **URL:** `/api/auth/login`
@@ -242,7 +245,7 @@ http://localhost:8080
     ```
 - **Error Response:**
   - **Code:** 401 UNAUTHORIZED
-  - **Content:** `"Missing or invalid Authorization header"`
+  - **Content:** `"Invalid or Expired Token"`
 
 #### 4. Logout User
 - **URL:** `/api/auth/logout`
