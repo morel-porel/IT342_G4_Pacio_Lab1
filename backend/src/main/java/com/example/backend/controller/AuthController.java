@@ -24,7 +24,7 @@ public class AuthController {
         return ResponseEntity.ok(authService.login(request));
     }
     @PostMapping("/logout")
-    public ResponseEntity<?> logout(@RequestHeader(value = "Authorization", required = false) String token){
+    public ResponseEntity<?> logout(@RequestHeader(value = "Authorization") String token){
         return ResponseEntity.ok("Logged out successfully");
     }
     @GetMapping("/me")
