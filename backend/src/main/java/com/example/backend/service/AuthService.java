@@ -6,8 +6,10 @@ import com.example.backend.dto.RegisterRequest;
 import com.example.backend.entity.User;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.security.TokenProvider;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class AuthService {
@@ -21,7 +23,7 @@ public class AuthService {
         this.tokenProvider = tokenProvider;
     }
     public User register(RegisterRequest request){
-        if(userRepository.existsByUsername(request.username))throw new RuntimeException("Username taken");
+        if(userRepository.existsByUsername(request.username))throw new ResponseStatusException(HttpStatus.CONFLICT, "Username taken");
         User user = new User();
         user.setUsername(request.username);
         user.setEmail(request.email);

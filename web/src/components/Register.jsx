@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import api from "../utils/api";
@@ -11,8 +11,9 @@ function Register() {
         formState: { errors } 
     } = useForm();
     const navigate = useNavigate();
-
+    const [serverError, setServerError] = useState("");
     const onSubmit = async(data) => {
+        setServerError("");
         try {
             await api.post("/auth/register", {
                 username: data.username,
@@ -24,7 +25,12 @@ function Register() {
             alert("Registration successful! Please log in.");
             navigate("/login");
         } catch (error) {
-            alert(error.response?.data || "Registration failed: ");
+            if (error.response && error.response.status === 409) {
+                setServerError("Username already taken.");
+            } else {
+                const message = error.response?.data?.message || "Registration failed. Please try again.";
+                setServerError(message);
+            }
         }
     };
 
@@ -32,6 +38,7 @@ function Register() {
         <div className="App">
             <h2>Register</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
+                {serverError && <div className="error-message">{serverError}</div>}
                 <input {...register("username", { required: true })} placeholder="Username" type="text"/>
                 <input {...register("email", { required: true })} placeholder="Email" type="email" />
                 <input {...register("firstName", { required: true })} placeholder="First Name" type="text" />
